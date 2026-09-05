@@ -37,18 +37,17 @@ scope (toy pickup, not general vacuuming) is unchanged by this addition.
   envelope from `MassPowerBudget.md` — a structural check, not just a
   screen, deferred to Task 11 detailed design.
 
-## Depth constraint — D-shape chassis (added 2026-09-05)
+## Depth envelope — D-shape chassis (added 2026-09-05, revised same day)
 
-`DrivetrainConcept.md` and `MassPowerBudget.md` now define the chassis as
-a D-shape (semicircular half-disc), 18 in wide × only 9 in front-to-back
-deep, with the front scoop mechanism itself claiming some of that 9 in.
-The hopper must fit within whatever depth remains behind the intake
-mechanism and ahead of/around the drive wheels, battery, and compute —
-this is a tighter packaging envelope than the hopper concept was
-originally sketched against. Flagged as an open risk in `tasks/plan.md`;
-Task 11 detailed design must validate hopper volume/toy capacity is still
-adequate within this depth before the mesh-bottom geometry above is
-finalized.
+`DrivetrainConcept.md` and `MassPowerBudget.md` define the chassis as a
+D-shape: an 18 in × 9 in rectangle at the front (housing the scoop and
+some of the drivetrain), unioned with a 9 in radius semicircle at the
+rear — 18 in total front-to-back depth. An earlier same-day revision had
+this as a pure 9 in-deep semicircle, which was flagged as a tight
+packaging squeeze; that risk is downgraded now that total depth is back to
+18 in. Task 11 detailed design still needs to do real component placement,
+as it would for any chassis shape, but this is no longer an elevated risk
+specific to the geometry.
 
 ## Interface to the charging & dump station
 

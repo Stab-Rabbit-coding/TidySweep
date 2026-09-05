@@ -35,25 +35,31 @@ default:**
   layout) fits inside the existing $45 "Drivetrain (motors + wheels only)"
   line in `MassPowerBudget.md` with more margin, not less.
 
-## Chassis footprint: D-shape (semicircular half-disc), 18 in (457 mm) flat front
+## Chassis footprint: D-shape as a rectangle + semicircle union, 18 in (457 mm) wide
 
-**Revised 2026-09-05.** The operator opted for a full 18 in wide front
-scoop, spanning the entire chassis width, making the robot a "D" shape.
-This is not just a cosmetic front-flattening: the longest possible chord
-on an 18 in diameter circle is 18 in itself, achieved only by a chord
-through the center — so a full-width flat front on an 18 in chassis is
-necessarily the diameter line, and the rear is a true semicircle, not a
-mostly-round shape with a flattened face. This replaces the prior full-circle
-footprint.
+**Revised 2026-09-05 (second revision, same day) — corrects the prior pure-
+semicircle interpretation.** The chassis is the union of an 18 in × 9 in
+(457 mm × 229 mm) rectangle at the front and a 9 in (229 mm) radius
+semicircle at the rear, sharing the rectangle's 18 in rear edge as the
+semicircle's diameter. This is the same "D" family of shape as a stock
+Roomba-style vacuum's body (flat front face, straight sidewalls for some
+depth, then a curved rear), not the true half-disc the prior revision
+assumed.
 
-- **Flat front (the scoop bay):** 18 in (457 mm) wide, spans the entire
-  leading edge.
-- **Curved rear:** semicircular arc, radius 9 in (229 mm).
-- **Front-to-back depth: 9 in (229 mm) total** — down from the 18 in
-  depth a full circle would have given. See `MassPowerBudget.md` for the
-  resulting area/mass recalculation and the internal-packaging risk this
-  creates for the drivetrain, hopper, battery, and compute all having to
-  fit behind the scoop within that 9 in depth.
+- **Flat front (the scoop bay):** 18 in (457 mm) wide — unchanged.
+- **Straight sidewalls:** 9 in (229 mm) deep, immediately behind the front
+  edge — this is new relative to the prior revision.
+- **Curved rear:** semicircular arc, radius 9 in (229 mm), same as before.
+- **Front-to-back depth: 18 in (457 mm) total** (9 in rectangle + 9 in
+  semicircle radius) — back to the same total depth the very first
+  full-circle revision had, while still keeping the full 18 in flat front
+  the pure-semicircle revision also had. This resolves the internal-
+  packaging squeeze flagged against the pure-semicircle version: see
+  `MassPowerBudget.md` for the updated area/mass and the now-downgraded
+  packaging risk in `tasks/plan.md`.
+- **Plan-view area: ~289 sq in** (162 sq in rectangle + ~127 sq in
+  semicircle) — larger than any prior revision (full circle 254.5 sq in,
+  pure semicircle 127.2 sq in, original rectangle 168 sq in).
 
 ## Open: wheel count and caster layout — coupled to Task 10, not decided here
 
@@ -63,9 +69,10 @@ designed) affects where weight and ground-contact pressure need to be.
 This section states the coupling and a working default, not a final
 answer — Task 10 detailed design can override the default below.
 
-**Working default: 2 drive wheels near the chassis center, plus a single
-caster tucked just behind the scoop, roughly centered on the flat front's
-midpoint — not a rear caster, and not two casters.**
+**Working default: 2 drive wheels positioned within the rectangular
+midsection (roughly at or near the rectangle/semicircle junction), plus a
+single caster tucked just behind the scoop within the rectangular
+section's front portion — not a rear caster, and not two casters.**
 
 Reasoning:
 
@@ -73,8 +80,12 @@ Reasoning:
   location.** With the entire 18 in flat front occupied by the intake
   mechanism, no wheel or caster can sit directly on that edge without
   interrupting the scoop. The caster must instead sit just inboard/aft of
-  the scoop, within the semicircular body — still near the front, just not
-  at the very leading edge.
+  the scoop.
+- **The 9 in rectangular midsection (new in this revision) gives that
+  caster, and the drive wheels, straight sidewalls to sit within** rather
+  than immediately fighting a curving body wall right behind the front
+  edge, as the pure-semicircle revision would have required. This is a
+  meaningful packaging improvement, not just a cosmetic change.
 - **3-point ground contact, not 4,** for the same reason as before: 3
   points always define a plane and guarantee all wheels stay loaded
   crossing an edge like the 3/8 in threshold; a 4-point layout risks one
@@ -82,14 +93,14 @@ Reasoning:
   doesn't otherwise need.
 - **A single front-center caster (not corner casters) is preferred**
   specifically because it sits centered behind the full-width scoop where
-  that mechanism's ground-contact-pressure load actually is, rather than
-  at the two corners where the flat front meets the curved sides (which
-  would support the chassis but not the scoop's own loading).
-- **This default still assumes the intake mechanism needs some depth
-  behind the flat front edge** (roller diameter, ramp geometry) before a
-  caster can be tucked in behind it — Task 10 must confirm there is
-  physically room for this within the compressed 9 in depth before this
-  layout is treated as final.
+  that mechanism's ground-contact-pressure load actually is.
+- **Drive-wheel axle position relative to overall center of mass/area is
+  a Task 10/11 detailed-design question**, not resolved here — the added
+  rectangular section shifts the shape's centroid forward relative to the
+  pure-semicircle revision, which may argue for the axle sitting further
+  back (nearer the rectangle/semicircle junction) than it would on a pure
+  disc, to keep pivot-in-place behavior balanced. Noted as a consideration,
+  not decided.
 
 ## Threshold crossing with a flat front edge — new consideration
 
@@ -122,7 +133,8 @@ rating before this is treated as decided.
 - `ObstacleTaxonomy.md` — furniture/living-obstacle avoidance benefiting
   from zero-radius turning
 - `ComputeSelection.md` — BeagleBone Blue's 4 H-bridge motor outputs
-- `MassPowerBudget.md` — Drivetrain cost/mass line, unaffected by this
-  decision (already sized for a 2-motor differential-drive assumption)
+- `MassPowerBudget.md` — Drivetrain cost/mass line unaffected by the shape
+  change (already sized for a 2-motor differential-drive assumption);
+  chassis structure line updated for the new ~289 sq in area
 - `TODO.md` §2.2 (Task 10, intake mechanism) — governs final caster
   placement and the H-bridge-sharing opportunity above

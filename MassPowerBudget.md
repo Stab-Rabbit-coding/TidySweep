@@ -17,7 +17,7 @@ parts.
 
 | Subsystem | Mass target, lbm (kg) | Power draw target, W (peak / mission-avg) |
 |---|---|---|
-| Chassis / structure | 1.6 (0.73) | 0 (passive) |
+| Chassis / structure | 1.9 (0.86) | 0 (passive) |
 | Drivetrain (motors, wheels, driver) | 1.2 (0.54) | 15 / 6 |
 | Intake mechanism (roller/claw + actuator) | 0.8 (0.36) | 10 / 3 |
 | Hopper + dump actuator | 0.6 (0.27) | 5 / 1 |
@@ -27,46 +27,50 @@ parts.
 | Charging contacts (robot-side, pogo-pin) | 0.1 (0.05) | 0 mission / ~40 while docked-charging (not a mission-power load) |
 | Wiring, connectors, fasteners, misc. | 0.2 (0.09) | 1 / 1 |
 | Contingency margin (~5% mass, sized power headroom) | 0.3 (0.14) | 2 / 2 |
-| **Total** | **6.2 lbm (2.81 kg)** | **~40 W peak / ~20 W mission-average** |
+| **Total** | **6.5 lbm (2.95 kg)** | **~40 W peak / ~20 W mission-average** |
 
 ## Space envelope target
 
-**Revised 2026-09-05 (second revision, same day): D-shape (semicircular
-half-disc) chassis**, superseding the brief full-circle revision that
-preceded it. The operator chose a full 18 in wide front scoop spanning the
-entire chassis width. Because the longest possible chord on an 18 in
-diameter circle is 18 in itself — achieved only through the center — a
-full-width flat front necessarily makes the rear a true semicircle, not a
-mostly-round shape with a flattened face. See `DrivetrainConcept.md` for
-the full geometry discussion and caster-placement consequences.
+**Revised 2026-09-05 (third revision, same day): D-shape as a rectangle +
+semicircle union**, correcting the pure-semicircle interpretation that
+preceded it. The chassis is an 18 in × 9 in (457 mm × 229 mm) rectangle at
+the front, unioned with a 9 in (229 mm) radius semicircle at the rear
+sharing the rectangle's 18 in rear edge as its diameter — the same "D"
+family as a stock Roomba-style body (flat front, straight sidewalls, then
+a curved rear), not a true half-disc. See `DrivetrainConcept.md` for the
+full geometry discussion and caster-placement consequences.
 
 - Flat front (scoop bay) width: 18 in (457 mm) — unchanged
-- **Front-to-back depth: 9 in (229 mm)** — down from the 18 in a full
-  circle would have given, since depth is now just the semicircle's radius
+- Straight sidewall depth: 9 in (229 mm) — new in this revision
+- Curved rear radius: 9 in (229 mm) — unchanged from the prior revision
+- **Front-to-back depth: 18 in (457 mm) total** (9 in rectangle + 9 in
+  semicircle radius) — restores the depth the very first full-circle
+  revision had, while keeping the full-width flat front the pure-semicircle
+  revision also had
 - Height: 7 in (178 mm) — unchanged, no new input on height
 
 **Doorway-clearance check:** unchanged conclusion — 18 in (457 mm) width
 still clears a typical US residential interior doorway (nominal 28-32 in
-clear opening) with comfortable margin. The reduced 9 in depth doesn't
-affect this check; width is the binding dimension for doorways.
+clear opening) with comfortable margin.
 
-**Chassis structure mass/cost impact:** a semicircular half-disc of 9 in
-radius (~127 sq in) is roughly half the plan-view area of the full 18 in
-circle from the prior revision (~254 sq in), and somewhat *smaller* than
-even the original 14 in × 12 in rectangular placeholder (~168 sq in).
-Chassis structure mass/cost were reduced from the full-circle revision's
-1.8 lbm / $60 to **1.6 lbm (0.73 kg) / $55**, splitting the difference
-rather than scaling area-proportionally, because the full-width flat front
-edge is a long unsupported span carrying the scoop's reaction loads and
-will need real reinforcement, not just the material a smaller area implies.
+**Chassis structure mass/cost impact:** the rectangle+semicircle union
+(~289 sq in: 162 sq in rectangle + ~127 sq in semicircle) is the largest
+plan-view area of any revision so far — larger than the full 18 in circle
+(~254.5 sq in), the pure semicircle (~127.2 sq in), and the original
+14 in × 12 in rectangle (~168 sq in). Chassis structure mass/cost were
+increased from the pure-semicircle revision's 1.6 lbm / $55 to **1.9 lbm
+(0.86 kg) / $62**, a modest increase rather than a full area-proportional
+one, since the added rectangular section is simpler flat-panel
+construction than the front-edge reinforcement the pure-semicircle version
+needed.
 
-**New risk, not yet resolved — internal packaging within 9 in of depth:**
-the drivetrain, hopper, battery, and compute (see rows above) must all fit
-behind the intake mechanism within a 9 in front-to-back depth, after the
-scoop mechanism itself claims some of that depth for its roller/ramp
-geometry. This is flagged as an open risk in `tasks/plan.md`, not assumed
-solved — Task 10/11 detailed layout must validate it fits before this
-chassis shape is treated as final.
+**Packaging risk downgraded, not closed:** the pure-semicircle revision's
+9 in depth squeeze (flagged as a Medium risk in `tasks/plan.md`) is
+resolved by this revision's 18 in total depth — comparable to the very
+first full-circle revision, which had no such risk flagged. Task 10/11
+detailed layout still needs to do the real component placement, as it
+would for any chassis shape; this is no longer treated as an elevated risk
+specific to this geometry.
 
 ## Cost budget (against the $500 BOM ceiling)
 
@@ -79,7 +83,7 @@ contingency margin below rather than assumed away.
 
 | Subsystem | Cost target ($) |
 |---|---|
-| Chassis / structure (D-shape half-disc, 18 in wide × 9 in deep, reinforced front edge) | 55 |
+| Chassis / structure (D-shape: 18×9 in rectangle + 9 in radius semicircle, 18 in total depth) | 62 |
 | Drivetrain (motors + wheels only — driver is onboard Blue) | 45 |
 | Intake mechanism | 45 |
 | Hopper + dump actuator | 30 |
@@ -88,7 +92,7 @@ contingency margin below rather than assumed away.
 | Battery pack (cells only — charge management is onboard Blue) | 35 |
 | Charging contacts (robot-side pogo-pin) | 15 |
 | Wiring, connectors, fasteners, misc. | 20 |
-| Contingency margin | 160 |
+| Contingency margin | 153 |
 | **Total** | **$500** |
 
 **Note on the sensor-suite row — this is the remaining half of the "$500
