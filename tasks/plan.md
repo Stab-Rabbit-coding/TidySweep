@@ -79,8 +79,8 @@ further as its own WBS branch when that phase opens.
 
 ### Phase 2: Mechanical Subsystem (hands off to project-overseer for sub-WBS)
 
-- [ ] Task 9: Chassis & drivetrain concept (differential drive vs. tank tread — trade study against threshold-climbing requirement)
-- [ ] Task 10: Intake/pickup mechanism concept (FRC-style roller/claw sized for 2 in cube, with guarding per ASTM/pinch-point standard)
+- [~] Task 9: Chassis & drivetrain concept — differential drive (wheeled) decided; wheel-count/caster layout coupled to Task 10, not yet closed — see `DrivetrainConcept.md`
+- [ ] Task 10: Intake/pickup mechanism concept (FRC-style roller/claw sized for 2 in cube, with guarding per ASTM/pinch-point standard) — determines final caster placement per `DrivetrainConcept.md`; check spare BeagleBone Blue H-bridge capacity (2 of 4 channels unused by drivetrain) before assuming a separate intake motor driver is needed
 - [ ] Task 11: Hopper + bin-emptying mechanism concept (onboard hopper geometry with mesh/perforated bottom for passive dirt-shedding, dock-and-dump actuation) — see `HopperMechanism.md`
 - [ ] Task 12: Charging dock mechanical interface (docking alignment geometry, pogo-pin contact) — **co-designed with Task 25/`ChargingDumpStation.md`**: the charging dock and the dump station are one physical unit, not two locations
 
@@ -133,6 +133,7 @@ further as its own WBS branch when that phase opens.
 | Station fan-separator airflow sizing is unvalidated (may tumble light toys along with trash, or fail to carry tissue-class debris) | Medium | Task 25 flags airflow CFM/static-pressure sizing as an explicit open question requiring empirical testing, not assumed solved by the concept note in `ChargingDumpStation.md` |
 | Mains-powered charging/dump station with a fan is a new safety surface in a home with kids/pets, now compounded by exposed charging contacts at the same location | Medium — safety | Task 27 requires household-appliance, fan-guarding, and charging-contact short-circuit safety citations in `REFERENCES.md` before any station prototype is built; preferring an off-the-shelf UL/ETL-listed blower module over a from-scratch fan design is noted as a way to inherit existing certification |
 | Merging the charging dock and dump station into one unit couples Task 12 and Task 25 — a design change to one now forces re-checking the other | Low | Both tasks explicitly cross-reference `ChargingDumpStation.md`; the Phase 6 checkpoint requires their geometry be reconciled into one design before either closes |
+| Caster placement in `DrivetrainConcept.md` assumes a front-mounted, forward-scooping intake before Task 10 has actually designed one | Low | Explicitly flagged as a working default, not a decision — front-caster placement must be revisited if Task 10 designs a top-loading or rear-mounted intake instead |
 
 ## Open Questions — RESOLVED 2026-09-05
 

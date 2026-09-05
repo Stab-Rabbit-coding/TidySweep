@@ -12,6 +12,7 @@ TidySweep/
 ├── ChargingDumpStation.md  # Phase 6 (+ Task 12): combined charging dock + mains-powered dump/fan-separator station
 ├── ComputeSelection.md     # Phase 3 (Task 13, done early): BeagleBone SKU decision — BeagleBone Blue
 ├── ConOps.md               # Phase 1: Concept of Operations (mission profile)
+├── DrivetrainConcept.md    # Phase 2 (Task 9): differential drive decided; caster layout coupled to Task 10
 ├── HopperMechanism.md      # Phase 2 (Task 11): mesh-bottom hopper concept
 ├── LICENSE-DOCS            # CC-BY-SA 4.0 full legal text (governs documentation)
 ├── LICENSE-HARDWARE        # CERN-OHL-P 2.0 full legal text (governs hardware description files)
