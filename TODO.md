@@ -24,7 +24,7 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 
 ## 2. Mechanical Subsystem
 
-- [~] 2.1 Chassis & drivetrain trade study — differential drive (wheeled, not tracked) decided; wheel-count/caster layout left open, coupled to §2.2 (see [`DrivetrainConcept.md`](DrivetrainConcept.md))
+- [~] 2.1 Chassis & drivetrain trade study — differential drive (wheeled, not tracked) decided, 18 in (457 mm) diameter circular chassis confirmed; wheel-count/caster layout left open, coupled to §2.2 (see [`DrivetrainConcept.md`](DrivetrainConcept.md))
 - [ ] 2.2 Intake/pickup mechanism concept (pinch-point guarding standard required — see REFERENCES.md open items) — governs final caster placement per `DrivetrainConcept.md`; check spare BeagleBone Blue H-bridge capacity before sizing a separate motor driver
 - [ ] 2.3 Hopper + dump mechanism concept — mesh/perforated bottom for passive dirt-shedding (see [`HopperMechanism.md`](HopperMechanism.md))
 - [ ] 2.4 Charging dock mechanical interface concept — robot-side half of the combined station in §6; co-designed with §6.1, not a separate location (see [`ChargingDumpStation.md`](ChargingDumpStation.md))

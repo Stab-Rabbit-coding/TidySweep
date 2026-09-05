@@ -79,7 +79,7 @@ further as its own WBS branch when that phase opens.
 
 ### Phase 2: Mechanical Subsystem (hands off to project-overseer for sub-WBS)
 
-- [~] Task 9: Chassis & drivetrain concept — differential drive (wheeled) decided; wheel-count/caster layout coupled to Task 10, not yet closed — see `DrivetrainConcept.md`
+- [~] Task 9: Chassis & drivetrain concept — differential drive (wheeled) decided, 18 in (457 mm) diameter circular chassis confirmed; wheel-count/caster layout coupled to Task 10, not yet closed — see `DrivetrainConcept.md`
 - [ ] Task 10: Intake/pickup mechanism concept (FRC-style roller/claw sized for 2 in cube, with guarding per ASTM/pinch-point standard) — determines final caster placement per `DrivetrainConcept.md`; check spare BeagleBone Blue H-bridge capacity (2 of 4 channels unused by drivetrain) before assuming a separate intake motor driver is needed
 - [ ] Task 11: Hopper + bin-emptying mechanism concept (onboard hopper geometry with mesh/perforated bottom for passive dirt-shedding, dock-and-dump actuation) — see `HopperMechanism.md`
 - [ ] Task 12: Charging dock mechanical interface (docking alignment geometry, pogo-pin contact) — **co-designed with Task 25/`ChargingDumpStation.md`**: the charging dock and the dump station are one physical unit, not two locations

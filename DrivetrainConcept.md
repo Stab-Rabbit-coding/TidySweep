@@ -35,6 +35,17 @@ default:**
   layout) fits inside the existing $45 "Drivetrain (motors + wheels only)"
   line in `MassPowerBudget.md` with more margin, not less.
 
+## Chassis footprint: 18 in (457 mm) diameter, circular
+
+Confirmed with the operator 2026-09-05. Sets the outer envelope this
+drivetrain and Task 10's intake mechanism both design within — see
+`MassPowerBudget.md`'s Space envelope section for the doorway-clearance
+check and the resulting chassis structure mass/cost update. Consistent
+with the differential-drive, Roomba-style layout below: drive wheels near
+the disc's center support pivot-in-place, and the intake mechanism's
+frontal opening is bounded by the chord width available near the leading
+edge of the circle, not an independent flat front panel.
+
 ## Open: wheel count and caster layout — coupled to Task 10, not decided here
 
 The operator specifically flagged that this shouldn't be settled as a pure

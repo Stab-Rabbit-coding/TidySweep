@@ -17,7 +17,7 @@ parts.
 
 | Subsystem | Mass target, lbm (kg) | Power draw target, W (peak / mission-avg) |
 |---|---|---|
-| Chassis / structure | 1.5 (0.68) | 0 (passive) |
+| Chassis / structure | 1.8 (0.82) | 0 (passive) |
 | Drivetrain (motors, wheels, driver) | 1.2 (0.54) | 15 / 6 |
 | Intake mechanism (roller/claw + actuator) | 0.8 (0.36) | 10 / 3 |
 | Hopper + dump actuator | 0.6 (0.27) | 5 / 1 |
@@ -27,17 +27,38 @@ parts.
 | Charging contacts (robot-side, pogo-pin) | 0.1 (0.05) | 0 mission / ~40 while docked-charging (not a mission-power load) |
 | Wiring, connectors, fasteners, misc. | 0.2 (0.09) | 1 / 1 |
 | Contingency margin (~5% mass, sized power headroom) | 0.3 (0.14) | 2 / 2 |
-| **Total** | **6.1 lbm (2.77 kg)** | **~40 W peak / ~20 W mission-average** |
+| **Total** | **6.4 lbm (2.90 kg)** | **~40 W peak / ~20 W mission-average** |
 
 ## Space envelope target
 
-Overall chassis footprint target (not additive — this is the outer
-envelope, sized to clear the 3/8 in (9.5 mm) threshold from `ConOps.md`
-with adequate approach-angle clearance, and to house the intake + hopper):
+**Revised 2026-09-05: circular chassis, 18 in (457 mm) diameter** — a
+Roomba-style circular platform, consistent with the differential-drive
+layout in `DrivetrainConcept.md` (2 drive wheels near the chassis center
+for pivot-in-place, one caster near the leading edge). This replaces the
+earlier rectangular 14 in × 12 in placeholder footprint.
 
-- Length: 14 in (356 mm)
-- Width: 12 in (305 mm)
-- Height: 7 in (178 mm)
+- Diameter: 18 in (457 mm)
+- Height: 7 in (178 mm) — unchanged from the earlier placeholder; no new
+  input on height, so it is carried forward, not re-derived.
+
+**Doorway-clearance check:** an 18 in (457 mm) diameter body clears a
+typical US residential interior doorway (nominal 28-32 in / 711-813 mm,
+clear opening a couple inches less after jamb/stop) with comfortable
+margin — this is a consistency check against `ConOps.md`'s multi-room
+operating environment, not a new requirement.
+
+**Chassis structure mass/cost impact:** an 18 in diameter circle
+(~254 sq in) is roughly 50% larger in plan-view area than the prior
+14 in × 12 in rectangle (~168 sq in). The chassis structure line above
+was increased from 1.5 to 1.8 lbm (0.68 to 0.82 kg) and from $50 to $60
+(see cost table below) to reflect the added material, funded out of
+contingency margin rather than left unaccounted for.
+
+**Open item for Task 10:** the intake mechanism's frontal opening width is
+now bounded by the available chord width near the leading edge of an
+18 in diameter circle, not an independent rectangular front panel — Task
+10 must design against this circular envelope, not assume a flat-fronted
+chassis.
 
 ## Cost budget (against the $500 BOM ceiling)
 
@@ -50,7 +71,7 @@ contingency margin below rather than assumed away.
 
 | Subsystem | Cost target ($) |
 |---|---|
-| Chassis / structure | 50 |
+| Chassis / structure (18 in diameter circular platform) | 60 |
 | Drivetrain (motors + wheels only — driver is onboard Blue) | 45 |
 | Intake mechanism | 45 |
 | Hopper + dump actuator | 30 |
@@ -59,7 +80,7 @@ contingency margin below rather than assumed away.
 | Battery pack (cells only — charge management is onboard Blue) | 35 |
 | Charging contacts (robot-side pogo-pin) | 15 |
 | Wiring, connectors, fasteners, misc. | 20 |
-| Contingency margin | 165 |
+| Contingency margin | 155 |
 | **Total** | **$500** |
 
 **Note on the sensor-suite row — this is the remaining half of the "$500
