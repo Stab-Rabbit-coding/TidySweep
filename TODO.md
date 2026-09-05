@@ -31,7 +31,7 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 
 ## 3. Electrical / Compute Subsystem
 
-- [ ] 3.1 BeagleBone SKU + sensor suite selection against I/O budget
+- [~] 3.1 BeagleBone SKU + sensor suite selection against I/O budget — SKU decided (BeagleBone Blue, see [`ComputeSelection.md`](ComputeSelection.md)); occupancy/living-obstacle sensor suite still open
 - [ ] 3.2 Motor driver + power distribution architecture
 - [ ] 3.3 Battery + charging safety-standard selection (REFERENCES.md entry required)
 
@@ -53,6 +53,9 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 ---
 
 **Current phase:** Phase 0 (Governance & Compliance) and Phase 1
-(Requirements & ConOps) both complete as of 2026-09-05. Phase 2 (Mechanical
-Subsystem) is ready to open — start with §2.1 (chassis/drivetrain trade
-study), which is unblocked and has no dependencies.
+(Requirements & ConOps) both complete as of 2026-09-05. Phase 3's §3.1
+compute SKU decision (BeagleBone Blue) was made early, out of WBS order, at
+operator request. Phase 2 (Mechanical Subsystem) is ready to open — start
+with §2.1 (chassis/drivetrain trade study), which is unblocked and has no
+dependencies. §3.1's remaining half (occupancy/living-obstacle sensor
+suite) is also ready whenever picked up.

@@ -61,6 +61,7 @@ further as its own WBS branch when that phase opens.
 - [ ] Task 4: TODO.md formal WBS skeleton + PROJECT_INDEX.md + Claude-MEMORY.md stub
 
 ### Checkpoint: Phase 0
+
 - [ ] Repo has LICENSE-DOCS (CC-BY-SA-4.0), LICENSE-HARDWARE (CERN-OHL-P-2.0), CLAUDE.md, AGENTS.md, REFERENCES.md, TODO.md, PROJECT_INDEX.md
 - [ ] `git log` shows an initial commit with all scaffolding files
 - [ ] No design or code file exists yet without its governing license file already in place
@@ -73,15 +74,18 @@ further as its own WBS branch when that phase opens.
 - [ ] Task 8: Mass/power/space budget skeleton (per user's global weight-and-balance requirement) — placeholder table with real target numbers, not TBD
 
 ### Checkpoint: Phase 1
+
 - [ ] ConOps.md, obstacle taxonomy, payload envelope, and mass/power budget all reviewed by user before mechanical/electrical design begins
 
 ### Phase 2: Mechanical Subsystem (hands off to project-overseer for sub-WBS)
+
 - [ ] Task 9: Chassis & drivetrain concept (differential drive vs. tank tread — trade study against threshold-climbing requirement)
 - [ ] Task 10: Intake/pickup mechanism concept (FRC-style roller/claw sized for 2 in cube, with guarding per ASTM/pinch-point standard)
 - [ ] Task 11: Hopper + bin-emptying mechanism concept (onboard hopper geometry, dock-and-dump actuation)
 - [ ] Task 12: Charging dock mechanical interface (docking alignment geometry, contact or inductive)
 
 ### Phase 3: Electrical / Compute Subsystem (hands off to project-overseer)
+
 - [ ] Task 13: BeagleBone SKU + peripheral sensor suite selection (LIDAR/depth camera, thermal/PIR for living-obstacle detection, IMU, wheel encoders)
 - [ ] Task 14: Motor driver + power distribution architecture sized to drivetrain + intake motor loads
 - [ ] Task 15: Battery + charging system selection with safety-standard citation (REFERENCES.md entry required before finalizing)
@@ -89,14 +93,16 @@ further as its own WBS branch when that phase opens.
 ### Phase 4: Software Subsystem (hands off to project-overseer)
 - [ ] Task 16: Navigation/SLAM stack selection for multi-room mapping
 - [ ] Task 17: Obstacle avoidance behavior tree, with a distinct living-obstacle (cat/dog/human) response class
-- [ ] Task 18: Pickup control logic (detect toy → approach → intake) 
+- [ ] Task 18: Pickup control logic (detect toy → approach → intake)
 - [ ] Task 19: Dock/empty-hopper routine (hopper-full trigger → navigate to bin → actuate dump)
 - [ ] Task 20: Battery monitoring + return-to-charger behavior
 
 ### Checkpoint: Phase 4
+
 - [ ] Each subsystem's Phase 2-4 concept task has a corresponding project-overseer WBS branch open before implementation starts
 
 ### Phase 5: Integration & Validation
+
 - [ ] Task 21: Bench integration of compute + motor control + one sensor (smoke test)
 - [ ] Task 22: Single-room obstacle-avoidance field test (static obstacles only)
 - [ ] Task 23: Living-obstacle field test (supervised, with actual pet/human present)
@@ -105,14 +111,14 @@ further as its own WBS branch when that phase opens.
 ## Risks and Mitigations
 
 | Risk | Impact | Mitigation |
-|------|--------|------------|
+| ------ | -------- | ------------ |
 | BeagleBone I/O budget insufficient for LIDAR + depth cam + motor control simultaneously | High | Task 13 does an explicit I/O/throughput budget before SKU is locked; PocketBeagle satellite offload considered |
 | Living-obstacle detection false-negatives (robot contacts a pet) | High — safety | Task 6/17 require a dedicated detection class and a conservative stop-distance; supervised field test (Task 23) gates any unsupervised operation |
 | Intake mechanism creates a pinch/entanglement hazard | Medium — safety | Task 10 requires a guarding citation in REFERENCES.md before fabrication (ASTM/ANSI machine-guarding class standard) |
 | Toy choking-hazard interaction (robot handling small-parts-adjacent toys) | Medium | Task 7 explicitly bounds payload envelope against ASTM F963 small-parts cylinder as a documented exclusion, not an assumption |
 | Licensing scaffolding retrofitted after design work begins | Medium — compliance | Phase 0 is sequenced first and is a hard gate in the Architecture Decisions |
 | Scope creep — full Roomba+FRC hybrid is a large multi-year build | Medium | Phases 2-4 stay at concept/selection granularity here; project-overseer opens each as its own WBS branch only when prior phase checkpoint passes |
-| $500 BOM ceiling may be incompatible with LIDAR/depth-camera-class perception on a BeagleBone-class compute platform | High | Task 13 must budget compute + sensors against the $500 ceiling explicitly; if LIDAR/depth camera doesn't fit, fall back to ultrasonic + PIR/thermal array for both static and living-obstacle detection and document the resulting range/reliability trade-off before Task 17 designs against it |
+| $500 BOM ceiling may be incompatible with LIDAR/depth-camera-class perception | Medium (downgraded from High 2026-09-05) | Compute half resolved: BeagleBone Blue selected at ~$45-50, integrating motor driver/IMU/encoders/charger that would otherwise be separate line items (see `ComputeSelection.md`), freeing budget into contingency. Sensor-suite half still open — ultrasonic + PIR/thermal remains the cost-feasible target over LIDAR/depth camera; Task 17 must design against that range/reliability profile, not assume LIDAR |
 
 ## Open Questions — RESOLVED 2026-09-05
 

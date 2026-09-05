@@ -41,30 +41,35 @@ with adequate approach-angle clearance, and to house the intake + hopper):
 
 ## Cost budget (against the $500 BOM ceiling)
 
+Updated 2026-09-05 after Task 13 selected BeagleBone Blue as the compute
+platform (see `ComputeSelection.md`). Blue integrates the motor H-bridge
+driver, 9-axis IMU, quadrature encoder interface, and LiPo charge
+management onto the compute board itself, which frees budget previously
+allocated to those as separate parts — that saving is redirected to
+contingency margin below rather than assumed away.
+
 | Subsystem | Cost target ($) |
 |---|---|
 | Chassis / structure | 50 |
-| Drivetrain (motors, wheels, driver) | 65 |
-| Intake mechanism | 40 |
+| Drivetrain (motors + wheels only — driver is onboard Blue) | 45 |
+| Intake mechanism | 45 |
 | Hopper + dump actuator | 30 |
-| Compute (BeagleBone Black-class — **not** AI-64, see note) | 60 |
-| Sensor suite (ultrasonic/PIR array — **not** LIDAR, see note) | 65 |
-| Battery pack | 35 |
-| Charging contacts (robot-side) | 15 |
-| Wiring, connectors, fasteners, misc. | 25 |
-| Contingency margin | 115 |
+| Compute (BeagleBone Blue — integrated motor driver, IMU, encoder interface, LiPo charger, WiFi/BT) | 50 |
+| Sensor suite (ultrasonic/PIR occupancy + living-obstacle array only — IMU/encoders now on the compute board, **not** LIDAR, see note) | 45 |
+| Battery pack (cells only — charge management is onboard Blue) | 35 |
+| Charging contacts (robot-side pogo-pin) | 15 |
+| Wiring, connectors, fasteners, misc. | 20 |
+| Contingency margin | 165 |
 | **Total** | **$500** |
 
-**Note on the compute/sensor cost rows — this is the direct output of the
-"$500 BOM ceiling" risk flagged in `tasks/plan.md`:** at current approximate
-market pricing, BeagleBone AI-64 (~$130-150) plus a 2D LIDAR-class sensor
-(~$99+) would alone consume 45-50% of the entire budget, leaving little
-margin for drivetrain, structure, and the intake mechanism. This table
-therefore targets **BeagleBone Black-class compute** and an
-**ultrasonic-array + PIR/thermal** sensor suite rather than AI-64 +
-LIDAR/depth-camera, as the cost-feasible path — Task 13 must treat this as
-the starting assumption and justify any deviation against the ceiling, not
-default to the higher-end SKU.
+**Note on the sensor-suite row — this is the remaining half of the "$500
+BOM ceiling" risk flagged in `tasks/plan.md`:** a 2D LIDAR-class sensor
+(~$99+) would alone consume roughly 20% of the entire budget even with
+compute now settled cheaply. This table still targets an
+**ultrasonic-array + PIR/thermal** sensor suite rather than LIDAR/depth
+camera as the cost-feasible path — Task 13's remaining open item (sensor
+selection) must treat this as the starting assumption and justify any
+LIDAR/depth-camera deviation against the ceiling, not default to it.
 
 ## Cross-check against `ConOps.md`
 
