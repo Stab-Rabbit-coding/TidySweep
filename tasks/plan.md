@@ -81,7 +81,7 @@ further as its own WBS branch when that phase opens.
 
 - [ ] Task 9: Chassis & drivetrain concept (differential drive vs. tank tread — trade study against threshold-climbing requirement)
 - [ ] Task 10: Intake/pickup mechanism concept (FRC-style roller/claw sized for 2 in cube, with guarding per ASTM/pinch-point standard)
-- [ ] Task 11: Hopper + bin-emptying mechanism concept (onboard hopper geometry, dock-and-dump actuation)
+- [ ] Task 11: Hopper + bin-emptying mechanism concept (onboard hopper geometry with mesh/perforated bottom for passive dirt-shedding, dock-and-dump actuation) — see `HopperMechanism.md`
 - [ ] Task 12: Charging dock mechanical interface (docking alignment geometry, contact or inductive)
 
 ### Phase 3: Electrical / Compute Subsystem (hands off to project-overseer)
@@ -91,6 +91,7 @@ further as its own WBS branch when that phase opens.
 - [ ] Task 15: Battery + charging system selection with safety-standard citation (REFERENCES.md entry required before finalizing)
 
 ### Phase 4: Software Subsystem (hands off to project-overseer)
+
 - [ ] Task 16: Navigation/SLAM stack selection for multi-room mapping
 - [ ] Task 17: Obstacle avoidance behavior tree, with a distinct living-obstacle (cat/dog/human) response class
 - [ ] Task 18: Pickup control logic (detect toy → approach → intake)
@@ -108,6 +109,16 @@ further as its own WBS branch when that phase opens.
 - [ ] Task 23: Living-obstacle field test (supervised, with actual pet/human present)
 - [ ] Task 24: Full pickup → hopper → dock → dump → return-to-charge end-to-end test
 
+### Phase 6: Stationary Bin Subsystem (new, added 2026-09-05; mains-powered accessory, separate budget from the robot's $500 BOM)
+
+- [ ] Task 25: Bin fan-separator mechanical concept (airflow-based toy/light-trash density separation) — see `DumpBinSeparator.md`
+- [ ] Task 26: Bin electrical design (fan/blower motor, mains power supply, dump-activation trigger — mechanical/IR vs. wireless from the robot's onboard BeagleBone Blue)
+- [ ] Task 27: Bin safety-standard vetting (household appliance safety, fan-guarding, mains cord safety) before fabrication
+
+### Checkpoint: Phase 6
+
+- [ ] Bin fan-separator concept validated against the placeholder $220 budget in `DumpBinSeparator.md`; safety citations added to `REFERENCES.md` before any bin prototype is built
+
 ## Risks and Mitigations
 
 | Risk | Impact | Mitigation |
@@ -119,6 +130,8 @@ further as its own WBS branch when that phase opens.
 | Licensing scaffolding retrofitted after design work begins | Medium — compliance | Phase 0 is sequenced first and is a hard gate in the Architecture Decisions |
 | Scope creep — full Roomba+FRC hybrid is a large multi-year build | Medium | Phases 2-4 stay at concept/selection granularity here; project-overseer opens each as its own WBS branch only when prior phase checkpoint passes |
 | $500 BOM ceiling may be incompatible with LIDAR/depth-camera-class perception | Medium (downgraded from High 2026-09-05) | Compute half resolved: BeagleBone Blue selected at ~$45-50, integrating motor driver/IMU/encoders/charger that would otherwise be separate line items (see `ComputeSelection.md`), freeing budget into contingency. Sensor-suite half still open — ultrasonic + PIR/thermal remains the cost-feasible target over LIDAR/depth camera; Task 17 must design against that range/reliability profile, not assume LIDAR |
+| Bin fan-separator airflow sizing is unvalidated (may tumble light toys along with trash, or fail to carry tissue-class debris) | Medium | Task 25 flags airflow CFM/static-pressure sizing as an explicit open question requiring empirical testing, not assumed solved by the concept note in `DumpBinSeparator.md` |
+| Mains-powered bin with a fan is a new safety surface in a home with kids/pets | Medium — safety | Task 27 requires household-appliance and fan-guarding safety citations in `REFERENCES.md` before any bin prototype is built; preferring an off-the-shelf UL/ETL-listed blower module over a from-scratch fan design is noted as a way to inherit existing certification |
 
 ## Open Questions — RESOLVED 2026-09-05
 

@@ -10,7 +10,7 @@ is marked "requires verification" below with a corresponding TODO in
 ## Active Citations
 
 | REF-ID | Title | URL | Section(s) Applied | Cited In |
-|--------|-------|-----|---------------------|----------|
+| -------- | ------- | ----- | --------------------- | ---------- |
 | REF-HW-001 | BeagleBone Black System Reference Manual / product page | <https://beagleboard.org/black> | Full board spec — considered, not selected (see `ComputeSelection.md`) — **requires verification**: specific I/O pinout/section not reviewed | `ComputeSelection.md` |
 | REF-HW-002 | BeagleBone AI-64 product page | <https://beagleboard.org/ai-64> | Full board spec — considered, not selected (see `ComputeSelection.md`, `MassPowerBudget.md` BOM-ceiling risk note) — **requires verification**: specific compute/AI-accelerator section not reviewed | `ComputeSelection.md` |
 | REF-HW-003 | PocketBeagle product page | <https://beagleboard.org/pocket> | Full board spec — original (non-2) generation, not selected | `ComputeSelection.md` |
@@ -44,6 +44,11 @@ is marked "requires verification" below with a corresponding TODO in
   - Battery/charging safety standard (candidate: UL 2054 or IEC 62133 family)
     for the charging system (`TODO.md` §3.3) — **not yet researched or
     cited**.
+  - Household appliance / electric fan safety standard (candidate: UL 507
+    or the IEC 60335 series) for the stationary bin's fan-separator
+    (`TODO.md` §6.3, `DumpBinSeparator.md`) — **not yet researched or
+    cited**. The same machine-guarding item above extends to the bin's fan
+    intake, since it will operate on the floor of a home with children.
 
 ## Removed / Superseded Citations
 

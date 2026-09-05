@@ -26,7 +26,7 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 
 - [ ] 2.1 Chassis & drivetrain trade study (differential vs. tracked, threshold-climbing)
 - [ ] 2.2 Intake/pickup mechanism concept (pinch-point guarding standard required — see REFERENCES.md open items)
-- [ ] 2.3 Hopper + bin-emptying mechanism concept
+- [ ] 2.3 Hopper + bin-emptying mechanism concept — mesh/perforated bottom for passive dirt-shedding (see [`HopperMechanism.md`](HopperMechanism.md))
 - [ ] 2.4 Charging dock mechanical interface concept
 
 ## 3. Electrical / Compute Subsystem
@@ -50,12 +50,21 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 - [ ] 5.3 Supervised living-obstacle field test
 - [ ] 5.4 Full end-to-end mission test (pickup → hopper → dock → dump → return-to-charge)
 
+## 6. Stationary Bin Subsystem (new, added 2026-09-05 — mains-powered accessory, separate budget from the robot's $500 BOM)
+
+- [ ] 6.1 Bin fan-separator mechanical concept (see [`DumpBinSeparator.md`](DumpBinSeparator.md))
+- [ ] 6.2 Bin electrical design (fan/blower, mains supply, dump-activation trigger)
+- [ ] 6.3 Bin safety-standard vetting (household appliance safety, fan guarding, mains cord safety)
+
 ---
 
 **Current phase:** Phase 0 (Governance & Compliance) and Phase 1
 (Requirements & ConOps) both complete as of 2026-09-05. Phase 3's §3.1
 compute SKU decision (BeagleBone Blue) was made early, out of WBS order, at
-operator request. Phase 2 (Mechanical Subsystem) is ready to open — start
-with §2.1 (chassis/drivetrain trade study), which is unblocked and has no
-dependencies. §3.1's remaining half (occupancy/living-obstacle sensor
-suite) is also ready whenever picked up.
+operator request. Phase 6 (Stationary Bin Subsystem) was added 2026-09-05
+at operator request — it is a mains-powered accessory with its own budget,
+separate from the robot's $500 BOM. Phase 2 (Mechanical Subsystem) is ready
+to open — start with §2.1 (chassis/drivetrain trade study), which is
+unblocked and has no dependencies. §3.1's remaining half (occupancy/
+living-obstacle sensor suite) and all of §6 are also ready whenever picked
+up.

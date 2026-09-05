@@ -29,6 +29,17 @@ raised in `tasks/plan.md`. Licensed CC-BY-SA 4.0 per [`LICENSING.md`](LICENSING.
   carry, or dock inside the stationary bin itself. This means the mechanical
   interface (`TODO.md` §2.3) only needs to solve alignment-to-chute-mouth and
   a dump actuation, not a full bin-entry maneuver.
+- **Mesh-bottom hopper (added 2026-09-05):** the onboard hopper has a mesh/
+  perforated floor that sheds incidental fine dirt back to the floor during
+  transit, keeping hopper capacity dedicated to toys. This is passive
+  dirt-shedding only — TidySweep does not vacuum or carry fine debris to the
+  bin. See `HopperMechanism.md`.
+- **Bin-side fan separator (added 2026-09-05):** the stationary bin is not a
+  passive receptacle — it actively separates light incidental trash (tissue,
+  lint, paper) from toys using an airflow/fan stage as toys and trash fall
+  through the chute. The bin is a **mains-powered appliance with its own
+  budget**, separate from the robot's $500 BOM ceiling. See
+  `DumpBinSeparator.md`.
 
 ## Charging
 
