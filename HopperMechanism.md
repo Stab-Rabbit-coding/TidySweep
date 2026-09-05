@@ -37,8 +37,22 @@ scope (toy pickup, not general vacuuming) is unchanged by this addition.
   envelope from `MassPowerBudget.md` — a structural check, not just a
   screen, deferred to Task 11 detailed design.
 
-## Interface to the dump bin
+## Depth constraint — D-shape chassis (added 2026-09-05)
+
+`DrivetrainConcept.md` and `MassPowerBudget.md` now define the chassis as
+a D-shape (semicircular half-disc), 18 in wide × only 9 in front-to-back
+deep, with the front scoop mechanism itself claiming some of that 9 in.
+The hopper must fit within whatever depth remains behind the intake
+mechanism and ahead of/around the drive wheels, battery, and compute —
+this is a tighter packaging envelope than the hopper concept was
+originally sketched against. Flagged as an open risk in `tasks/plan.md`;
+Task 11 detailed design must validate hopper volume/toy capacity is still
+adequate within this depth before the mesh-bottom geometry above is
+finalized.
+
+## Interface to the charging & dump station
 
 Unchanged from `ConOps.md`: the hopper dumps its (toy-only, mesh-sifted)
-contents through the fixed chute into the stationary bin. See
-`DumpBinSeparator.md` for what happens on the bin side of that interface.
+contents through the fixed chute into the station. See
+`ChargingDumpStation.md` for what happens on the station side of that
+interface.

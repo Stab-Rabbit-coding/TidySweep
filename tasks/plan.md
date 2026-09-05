@@ -79,7 +79,7 @@ further as its own WBS branch when that phase opens.
 
 ### Phase 2: Mechanical Subsystem (hands off to project-overseer for sub-WBS)
 
-- [~] Task 9: Chassis & drivetrain concept — differential drive (wheeled) decided, 18 in (457 mm) diameter circular chassis confirmed; wheel-count/caster layout coupled to Task 10, not yet closed — see `DrivetrainConcept.md`
+- [~] Task 9: Chassis & drivetrain concept — differential drive (wheeled) decided; chassis is now a D-shape (semicircular half-disc), 18 in wide × 9 in deep, per a full-width front scoop; wheel-count/caster layout coupled to Task 10, not yet closed; 9 in depth packaging risk open — see `DrivetrainConcept.md`
 - [ ] Task 10: Intake/pickup mechanism concept (FRC-style roller/claw sized for 2 in cube, with guarding per ASTM/pinch-point standard) — determines final caster placement per `DrivetrainConcept.md`; check spare BeagleBone Blue H-bridge capacity (2 of 4 channels unused by drivetrain) before assuming a separate intake motor driver is needed
 - [ ] Task 11: Hopper + bin-emptying mechanism concept (onboard hopper geometry with mesh/perforated bottom for passive dirt-shedding, dock-and-dump actuation) — see `HopperMechanism.md`
 - [ ] Task 12: Charging dock mechanical interface (docking alignment geometry, pogo-pin contact) — **co-designed with Task 25/`ChargingDumpStation.md`**: the charging dock and the dump station are one physical unit, not two locations
@@ -134,6 +134,7 @@ further as its own WBS branch when that phase opens.
 | Mains-powered charging/dump station with a fan is a new safety surface in a home with kids/pets, now compounded by exposed charging contacts at the same location | Medium — safety | Task 27 requires household-appliance, fan-guarding, and charging-contact short-circuit safety citations in `REFERENCES.md` before any station prototype is built; preferring an off-the-shelf UL/ETL-listed blower module over a from-scratch fan design is noted as a way to inherit existing certification |
 | Merging the charging dock and dump station into one unit couples Task 12 and Task 25 — a design change to one now forces re-checking the other | Low | Both tasks explicitly cross-reference `ChargingDumpStation.md`; the Phase 6 checkpoint requires their geometry be reconciled into one design before either closes |
 | Caster placement in `DrivetrainConcept.md` assumes a front-mounted, forward-scooping intake before Task 10 has actually designed one | Low | Explicitly flagged as a working default, not a decision — front-caster placement must be revisited if Task 10 designs a top-loading or rear-mounted intake instead |
+| D-shape chassis (full 18 in wide scoop) compresses front-to-back depth to 9 in — drivetrain, hopper, battery, and compute may not all fit behind the scoop within that depth | Medium | Flagged explicitly in `MassPowerBudget.md` and `HopperMechanism.md` as unresolved; Task 10/11 detailed layout must validate actual component fit before the D-shape is treated as final. Falling back to a less extreme flattened-front (not a full diametral cut) remains an option if packaging doesn't close |
 
 ## Open Questions — RESOLVED 2026-09-05
 

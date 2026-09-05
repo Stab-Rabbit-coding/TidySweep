@@ -35,16 +35,25 @@ default:**
   layout) fits inside the existing $45 "Drivetrain (motors + wheels only)"
   line in `MassPowerBudget.md` with more margin, not less.
 
-## Chassis footprint: 18 in (457 mm) diameter, circular
+## Chassis footprint: D-shape (semicircular half-disc), 18 in (457 mm) flat front
 
-Confirmed with the operator 2026-09-05. Sets the outer envelope this
-drivetrain and Task 10's intake mechanism both design within — see
-`MassPowerBudget.md`'s Space envelope section for the doorway-clearance
-check and the resulting chassis structure mass/cost update. Consistent
-with the differential-drive, Roomba-style layout below: drive wheels near
-the disc's center support pivot-in-place, and the intake mechanism's
-frontal opening is bounded by the chord width available near the leading
-edge of the circle, not an independent flat front panel.
+**Revised 2026-09-05.** The operator opted for a full 18 in wide front
+scoop, spanning the entire chassis width, making the robot a "D" shape.
+This is not just a cosmetic front-flattening: the longest possible chord
+on an 18 in diameter circle is 18 in itself, achieved only by a chord
+through the center — so a full-width flat front on an 18 in chassis is
+necessarily the diameter line, and the rear is a true semicircle, not a
+mostly-round shape with a flattened face. This replaces the prior full-circle
+footprint.
+
+- **Flat front (the scoop bay):** 18 in (457 mm) wide, spans the entire
+  leading edge.
+- **Curved rear:** semicircular arc, radius 9 in (229 mm).
+- **Front-to-back depth: 9 in (229 mm) total** — down from the 18 in
+  depth a full circle would have given. See `MassPowerBudget.md` for the
+  resulting area/mass recalculation and the internal-packaging risk this
+  creates for the drivetrain, hopper, battery, and compute all having to
+  fit behind the scoop within that 9 in depth.
 
 ## Open: wheel count and caster layout — coupled to Task 10, not decided here
 
@@ -54,35 +63,45 @@ designed) affects where weight and ground-contact pressure need to be.
 This section states the coupling and a working default, not a final
 answer — Task 10 detailed design can override the default below.
 
-**Working default: 2 drive wheels near the chassis center (on a common
-axle, for pivot-in-place), plus a single front caster — not a rear caster,
-and not two casters.**
+**Working default: 2 drive wheels near the chassis center, plus a single
+caster tucked just behind the scoop, roughly centered on the flat front's
+midpoint — not a rear caster, and not two casters.**
 
 Reasoning:
 
-- **3-point ground contact, not 4.** Mobile-robotics practice generally
-  prefers 3 ground-contact points (2 driven + 1 idle) over 4, because 3
-  points always define a plane and guarantee all wheels stay loaded on an
-  uneven surface. A 4-point layout (e.g., 2 drive wheels + front and rear
-  casters) can leave one contact point unloaded or hanging while crossing
-  an edge like the 3/8 in threshold, unless compliant suspension is added —
-  which is extra mechanical complexity this ConOps doesn't otherwise need.
-  This argues for exactly one caster, front or rear, not two.
-- **Front caster is favored over rear (unlike a stock Roomba, which uses a
-  rear caster) because of the intake mechanism, not despite it.** An
-  active FRC-style roller/claw intake (Task 10) most plausibly sits at the
-  front of the chassis, scooping as the robot drives forward, and likely
-  needs consistent downward ground-contact pressure to engage irregular
-  toys reliably. A front caster sits directly under or near that load,
-  supporting the intake's nose weight and helping it ride smoothly over
-  the threshold bevel. A rear caster (Roomba's layout) would leave the
-  intake's front nose unsupported and cantilevered off the drive-wheel
-  axle — more prone to dipping, dragging, or losing consistent floor
-  contact right at the moment it's crossing a threshold or engaging a toy.
-- **This default assumes a front-mounted, forward-scooping intake.** If
-  Task 10 instead designs a top-loading, centrally-mounted, or
-  rear-mounted intake, this caster placement should be revisited — it is
-  explicitly not locked in.
+- **The full-width scoop removes the front edge itself as a mounting
+  location.** With the entire 18 in flat front occupied by the intake
+  mechanism, no wheel or caster can sit directly on that edge without
+  interrupting the scoop. The caster must instead sit just inboard/aft of
+  the scoop, within the semicircular body — still near the front, just not
+  at the very leading edge.
+- **3-point ground contact, not 4,** for the same reason as before: 3
+  points always define a plane and guarantee all wheels stay loaded
+  crossing an edge like the 3/8 in threshold; a 4-point layout risks one
+  contact point unloading without added suspension compliance this ConOps
+  doesn't otherwise need.
+- **A single front-center caster (not corner casters) is preferred**
+  specifically because it sits centered behind the full-width scoop where
+  that mechanism's ground-contact-pressure load actually is, rather than
+  at the two corners where the flat front meets the curved sides (which
+  would support the chassis but not the scoop's own loading).
+- **This default still assumes the intake mechanism needs some depth
+  behind the flat front edge** (roller diameter, ramp geometry) before a
+  caster can be tucked in behind it — Task 10 must confirm there is
+  physically room for this within the compressed 9 in depth before this
+  layout is treated as final.
+
+## Threshold crossing with a flat front edge — new consideration
+
+A full flat 18 in front edge crossing the 3/8 in threshold means the
+entire width of the leading edge meets the threshold's bevel
+simultaneously (a line contact), unlike a rounded bumper's point contact.
+This is a standard design pattern (e.g., a car bumper or snowplow blade
+riding a beveled transition) and not inherently a problem, but the
+scoop mechanism's own lowest ground-engaging edge — not just a caster or
+bumper — is what will meet the threshold first. Task 10 needs to give that
+edge its own ramp/chamfer geometry; this is not solved by the drivetrain
+concept alone.
 
 ## Available H-bridge capacity — a Task 10/14 opportunity, not yet claimed
 
