@@ -1,0 +1,122 @@
+# Implementation Plan: TidySweep — Multi-Room Toy-Cleaning Robot
+
+## Overview
+
+TidySweep is an autonomous multi-room floor robot that finds, picks up, and hauls
+away irregular toys and debris up to 2 in (50.8 mm) cubes, then empties its
+onboard hopper into a stationary external bin and returns to a charging dock
+under its own battery management. It is a hybrid of a FIRST Robotics-style
+active debris-collection mechanism (intake roller/claw + hopper) and a Roomba-
+style autonomous floor-coverage robot (LIDAR/vision SLAM, docking, scheduled
+coverage). Compute and motor control run on the BeagleBone ecosystem
+(BeagleBone AI-64 or BeagleBone Black + PocketBeagle satellite, TBD by Task 3).
+All documentation ships under CC-BY-SA 4.0; all hardware (mechanical CAD,
+schematics, PCB layout) ships under CERN-OHL-P 2.0. This is a real build —
+every part is fabricated or procured, no conceptual placeholders.
+
+This plan produces the *scaffolding and Phase 0/1 breakdown only*. It hands off
+to `project-overseer` to convert this into the repo's authoritative TODO.md WBS
+and execute task-by-task, and to `compound-engineering:ce-strategy` for
+higher-level sequencing/risk framing across phases. Detailed mechanical/
+electrical/software design tasks beyond Phase 1 are intentionally left at
+medium granularity here — project-overseer will decompose each Phase 2+ item
+further as its own WBS branch when that phase opens.
+
+## Architecture Decisions
+
+- **Compute platform is a firm constraint (BeagleBone ecosystem)**, not an
+  open trade study. Task 3 selects *which* BeagleBone SKU(s) satisfy the I/O
+  budget (this is a size/selection decision, not a platform decision).
+- **Vertical-slice ordering**: governance/licensing scaffolding first (it
+  gates every subsequent commit's compliance), then a single "detect obstacle
+  → stop/avoid" slice, then a single "detect toy → pick up → hopper" slice,
+  then "hopper full → dock → empty into bin" slice, then "battery low → return
+  to dock" slice, then multi-room navigation/mapping ties the slices together.
+  This mirrors the Roomba-analogy subsystems the user listed in requirements
+  order.
+- **Licensing files are infrastructure, not an afterthought**: CC-BY-SA 4.0
+  LICENSE-DOCS and CERN-OHL-P 2.0 LICENSE-HARDWARE must exist before any
+  design or doc file is committed, per the user's global authenticity/
+  attribution standard.
+- **Living obstacles (cats/dogs/humans) are a distinct hazard class** from
+  static furniture: they move unpredictably and must never be contacted, let
+  alone driven over or intake-rollered. This drives a required "biological
+  object" detection class (thermal/depth+motion, not just LIDAR occupancy)
+  called out explicitly in Phase 3 rather than assumed to fall out of generic
+  obstacle avoidance.
+- **Standards vetting is mandatory before any safety-relevant spec is
+  implemented** (per user's global Standards Vetting Policy): pinch-point/
+  intake-roller guarding, battery charging safety (UL 2054 / IEC 62133-class
+  reasoning), and toy-size choking-hazard handling logic against ASTM F963
+  small-parts thresholds all need a REFERENCES.md entry before the mechanism
+  is finalized, not after.
+
+## Task List
+
+### Phase 0: Repository & Governance Scaffolding
+
+- [ ] Task 1: Root governance files (CLAUDE.md, AGENTS.md, README.md)
+- [ ] Task 2: Licensing infrastructure (CC-BY-SA 4.0 docs, CERN-OHL-P 2.0 hardware)
+- [ ] Task 3: REFERENCES.md skeleton + BeagleBone SKU selection citation
+- [ ] Task 4: TODO.md formal WBS skeleton + PROJECT_INDEX.md + Claude-MEMORY.md stub
+
+### Checkpoint: Phase 0
+- [ ] Repo has LICENSE-DOCS (CC-BY-SA-4.0), LICENSE-HARDWARE (CERN-OHL-P-2.0), CLAUDE.md, AGENTS.md, REFERENCES.md, TODO.md, PROJECT_INDEX.md
+- [ ] `git log` shows an initial commit with all scaffolding files
+- [ ] No design or code file exists yet without its governing license file already in place
+
+### Phase 1: Requirements & Concept of Operations (ConOps)
+
+- [ ] Task 5: Write ConOps.md — mission profile (rooms, floor types, thresholds height, session duration, duty cycle)
+- [ ] Task 6: Define obstacle taxonomy (static: thresholds/furniture; dynamic: cats/dogs/humans) with required detection ranges and response behaviors
+- [ ] Task 7: Define payload envelope (2 in / 50.8 mm cube max, irregular shape, mass range) and hopper capacity target
+- [ ] Task 8: Mass/power/space budget skeleton (per user's global weight-and-balance requirement) — placeholder table with real target numbers, not TBD
+
+### Checkpoint: Phase 1
+- [ ] ConOps.md, obstacle taxonomy, payload envelope, and mass/power budget all reviewed by user before mechanical/electrical design begins
+
+### Phase 2: Mechanical Subsystem (hands off to project-overseer for sub-WBS)
+- [ ] Task 9: Chassis & drivetrain concept (differential drive vs. tank tread — trade study against threshold-climbing requirement)
+- [ ] Task 10: Intake/pickup mechanism concept (FRC-style roller/claw sized for 2 in cube, with guarding per ASTM/pinch-point standard)
+- [ ] Task 11: Hopper + bin-emptying mechanism concept (onboard hopper geometry, dock-and-dump actuation)
+- [ ] Task 12: Charging dock mechanical interface (docking alignment geometry, contact or inductive)
+
+### Phase 3: Electrical / Compute Subsystem (hands off to project-overseer)
+- [ ] Task 13: BeagleBone SKU + peripheral sensor suite selection (LIDAR/depth camera, thermal/PIR for living-obstacle detection, IMU, wheel encoders)
+- [ ] Task 14: Motor driver + power distribution architecture sized to drivetrain + intake motor loads
+- [ ] Task 15: Battery + charging system selection with safety-standard citation (REFERENCES.md entry required before finalizing)
+
+### Phase 4: Software Subsystem (hands off to project-overseer)
+- [ ] Task 16: Navigation/SLAM stack selection for multi-room mapping
+- [ ] Task 17: Obstacle avoidance behavior tree, with a distinct living-obstacle (cat/dog/human) response class
+- [ ] Task 18: Pickup control logic (detect toy → approach → intake) 
+- [ ] Task 19: Dock/empty-hopper routine (hopper-full trigger → navigate to bin → actuate dump)
+- [ ] Task 20: Battery monitoring + return-to-charger behavior
+
+### Checkpoint: Phase 4
+- [ ] Each subsystem's Phase 2-4 concept task has a corresponding project-overseer WBS branch open before implementation starts
+
+### Phase 5: Integration & Validation
+- [ ] Task 21: Bench integration of compute + motor control + one sensor (smoke test)
+- [ ] Task 22: Single-room obstacle-avoidance field test (static obstacles only)
+- [ ] Task 23: Living-obstacle field test (supervised, with actual pet/human present)
+- [ ] Task 24: Full pickup → hopper → dock → dump → return-to-charge end-to-end test
+
+## Risks and Mitigations
+
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| BeagleBone I/O budget insufficient for LIDAR + depth cam + motor control simultaneously | High | Task 13 does an explicit I/O/throughput budget before SKU is locked; PocketBeagle satellite offload considered |
+| Living-obstacle detection false-negatives (robot contacts a pet) | High — safety | Task 6/17 require a dedicated detection class and a conservative stop-distance; supervised field test (Task 23) gates any unsupervised operation |
+| Intake mechanism creates a pinch/entanglement hazard | Medium — safety | Task 10 requires a guarding citation in REFERENCES.md before fabrication (ASTM/ANSI machine-guarding class standard) |
+| Toy choking-hazard interaction (robot handling small-parts-adjacent toys) | Medium | Task 7 explicitly bounds payload envelope against ASTM F963 small-parts cylinder as a documented exclusion, not an assumption |
+| Licensing scaffolding retrofitted after design work begins | Medium — compliance | Phase 0 is sequenced first and is a hard gate in the Architecture Decisions |
+| Scope creep — full Roomba+FRC hybrid is a large multi-year build | Medium | Phases 2-4 stay at concept/selection granularity here; project-overseer opens each as its own WBS branch only when prior phase checkpoint passes |
+
+## Open Questions
+
+- Room/floor inventory (carpet vs. hard floor, number of rooms, threshold heights) — needed to finalize Task 5 ConOps and Task 9 drivetrain trade study.
+- Stationary bin location and interface (fixed chute vs. robot docks fully inside a receptacle) — needed for Task 11/19.
+- Charging dock power source and contact scheme (pogo-pin vs. inductive) — needed for Task 12/15.
+- Target unit cost / BOM budget ceiling — not yet stated; needed before Phase 3 component selection.
+- Duty cycle / autonomy level desired (fully unsupervised vs. supervised runs only, at least initially) — directly affects Task 23 field-test scope and overall safety case.
