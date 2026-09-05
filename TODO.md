@@ -17,10 +17,10 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 
 ## 1. Requirements & Concept of Operations (ConOps)
 
-- [X] 1.1 ConOps.md — mission profile — **blocked**: needs user input on room/floor inventory (see Open Questions, `tasks/plan.md`)
-- [ ] 1.2 Obstacle taxonomy (static thresholds/furniture vs. dynamic/living: cats, dogs, humans)
-- [ ] 1.3 Payload envelope (2 in / 50.8 mm cube max) + ASTM F963 small-parts exclusion citation
-- [X] 1.4 Mass/power/space budget skeleton — **blocked**: depends on 1.1-1.3
+- [x] 1.1 ConOps.md — mission profile (see [`ConOps.md`](ConOps.md))
+- [x] 1.2 Obstacle taxonomy (see [`ObstacleTaxonomy.md`](ObstacleTaxonomy.md)) — living-obstacle standard citation (REF-STD-002) still requires verification
+- [x] 1.3 Payload envelope (see [`PayloadEnvelope.md`](PayloadEnvelope.md)) — small-parts exclusion cited to 16 CFR Part 1501 §1501.4 (REF-STD-001)
+- [x] 1.4 Mass/power/space budget skeleton (see [`MassPowerBudget.md`](MassPowerBudget.md)) — target allocation only, not a BOM; flags $500 ceiling as tight against BeagleBone AI-64 + LIDAR
 
 ## 2. Mechanical Subsystem
 
@@ -52,6 +52,7 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 
 ---
 
-**Current phase:** Phase 0 (Governance & Compliance) complete. Phase 1
-(Requirements & ConOps) is blocked on user input — see §1.1/§1.4 above and
-the "Open Questions" section of `tasks/plan.md`.
+**Current phase:** Phase 0 (Governance & Compliance) and Phase 1
+(Requirements & ConOps) both complete as of 2026-09-05. Phase 2 (Mechanical
+Subsystem) is ready to open — start with §2.1 (chassis/drivetrain trade
+study), which is unblocked and has no dependencies.

@@ -9,12 +9,17 @@ TidySweep/
 ├── AGENTS.md              # Authoritative AI-agent instructions (model-agnostic)
 ├── CLAUDE.md               # Stub pointing to AGENTS.md
 ├── Claude-MEMORY.md        # Auditable mirror of Claude's auto-memory writes for this project
+├── ConOps.md               # Phase 1: Concept of Operations (mission profile)
 ├── LICENSE-DOCS            # CC-BY-SA 4.0 full legal text (governs documentation)
 ├── LICENSE-HARDWARE        # CERN-OHL-P 2.0 full legal text (governs hardware description files)
 ├── LICENSING.md            # File-type → license mapping
+├── MassPowerBudget.md      # Phase 1: mass/power/space/cost target allocation
+├── ObstacleTaxonomy.md     # Phase 1: obstacle classes and detection/response rules
+├── PayloadEnvelope.md      # Phase 1: payload size envelope + small-parts exclusion
 ├── PROJECT_INDEX.md        # This file
 ├── README.md               # Project overview and status
 ├── REFERENCES.md           # Standards/reference catalog (REF-ID keyed)
+├── STRATEGY.md             # Product strategy anchor (ce-strategy output)
 ├── TODO.md                 # Authoritative top-level WBS
 └── tasks/
     ├── plan.md              # Current-phase implementation plan (architecture decisions, risks, open questions)

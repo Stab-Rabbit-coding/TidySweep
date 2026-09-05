@@ -112,11 +112,14 @@ further as its own WBS branch when that phase opens.
 | Toy choking-hazard interaction (robot handling small-parts-adjacent toys) | Medium | Task 7 explicitly bounds payload envelope against ASTM F963 small-parts cylinder as a documented exclusion, not an assumption |
 | Licensing scaffolding retrofitted after design work begins | Medium — compliance | Phase 0 is sequenced first and is a hard gate in the Architecture Decisions |
 | Scope creep — full Roomba+FRC hybrid is a large multi-year build | Medium | Phases 2-4 stay at concept/selection granularity here; project-overseer opens each as its own WBS branch only when prior phase checkpoint passes |
+| $500 BOM ceiling may be incompatible with LIDAR/depth-camera-class perception on a BeagleBone-class compute platform | High | Task 13 must budget compute + sensors against the $500 ceiling explicitly; if LIDAR/depth camera doesn't fit, fall back to ultrasonic + PIR/thermal array for both static and living-obstacle detection and document the resulting range/reliability trade-off before Task 17 designs against it |
 
-## Open Questions
+## Open Questions — RESOLVED 2026-09-05
 
-- Room/floor inventory (carpet vs. hard floor, number of rooms, threshold heights) — needed to finalize Task 5 ConOps and Task 9 drivetrain trade study.
-- Stationary bin location and interface (fixed chute vs. robot docks fully inside a receptacle) — needed for Task 11/19.
-- Charging dock power source and contact scheme (pogo-pin vs. inductive) — needed for Task 12/15.
-- Target unit cost / BOM budget ceiling — not yet stated; needed before Phase 3 component selection.
-- Duty cycle / autonomy level desired (fully unsupervised vs. supervised runs only, at least initially) — directly affects Task 23 field-test scope and overall safety case.
+- Room/floor inventory: **up to 5 rooms, single-story; hardwood or low-pile carpet; interior thresholds up to 3/8 in (9.5 mm) tall.** See `ConOps.md`.
+- Bin interface: **dump-through-chute** — robot docks at a fixed chute and actuates the hopper; it does not enter or carry the bin itself. See `ConOps.md`.
+- Charging scheme: **pogo-pin contact charging** at a fixed dock — this requires tighter docking alignment tolerance than inductive would have. See `ConOps.md`.
+- BOM ceiling: **$500 max per-unit BOM.** Flagged as a **high risk** in the Risks table below — this is a tight budget against a BeagleBone-class compute platform plus any LIDAR/depth-camera-class sensing, and materially constrains Task 13's sensor-suite selection.
+- Autonomy level: **unsupervised by default, with a supervision override** (user can pause / manually drive / single-step, e.g. during commissioning or when personally monitoring a living-obstacle encounter). This does not relax the Task 23 supervised-field-test gate before unsupervised operation ships — the override is a runtime user control, not a substitute for validation.
+
+New open item: session duration / duty cycle target was not part of the original blocker list but is needed to size the battery (Task 15). `ConOps.md` records an engineering-derived placeholder (single-charge full-house coverage, ≤45 min active runtime) explicitly flagged for confirmation before Task 15 is finalized — this is a derived assumption, not a user-supplied number.
