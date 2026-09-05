@@ -82,7 +82,7 @@ further as its own WBS branch when that phase opens.
 - [ ] Task 9: Chassis & drivetrain concept (differential drive vs. tank tread — trade study against threshold-climbing requirement)
 - [ ] Task 10: Intake/pickup mechanism concept (FRC-style roller/claw sized for 2 in cube, with guarding per ASTM/pinch-point standard)
 - [ ] Task 11: Hopper + bin-emptying mechanism concept (onboard hopper geometry with mesh/perforated bottom for passive dirt-shedding, dock-and-dump actuation) — see `HopperMechanism.md`
-- [ ] Task 12: Charging dock mechanical interface (docking alignment geometry, contact or inductive)
+- [ ] Task 12: Charging dock mechanical interface (docking alignment geometry, pogo-pin contact) — **co-designed with Task 25/`ChargingDumpStation.md`**: the charging dock and the dump station are one physical unit, not two locations
 
 ### Phase 3: Electrical / Compute Subsystem (hands off to project-overseer)
 
@@ -109,15 +109,15 @@ further as its own WBS branch when that phase opens.
 - [ ] Task 23: Living-obstacle field test (supervised, with actual pet/human present)
 - [ ] Task 24: Full pickup → hopper → dock → dump → return-to-charge end-to-end test
 
-### Phase 6: Stationary Bin Subsystem (new, added 2026-09-05; mains-powered accessory, separate budget from the robot's $500 BOM)
+### Phase 6: Charging & Dump Station Subsystem (added 2026-09-05, revised same day — merged with the charging dock into one physical station; mains-powered, separate budget from the robot's $500 BOM)
 
-- [ ] Task 25: Bin fan-separator mechanical concept (airflow-based toy/light-trash density separation) — see `DumpBinSeparator.md`
-- [ ] Task 26: Bin electrical design (fan/blower motor, mains power supply, dump-activation trigger — mechanical/IR vs. wireless from the robot's onboard BeagleBone Blue)
-- [ ] Task 27: Bin safety-standard vetting (household appliance safety, fan-guarding, mains cord safety) before fabrication
+- [ ] Task 25: Station fan-separator + docking-bay mechanical concept (airflow-based toy/light-trash density separation, co-designed with Task 12) — see `ChargingDumpStation.md`
+- [ ] Task 26: Station electrical design (fan/blower motor, one shared mains PSU feeding both the fan and the robot's DC charging contacts at 9-18V, dump-activation trigger derived from the docking-contact signal rather than a separate sensor)
+- [ ] Task 27: Station safety-standard vetting (household appliance safety, fan-guarding, mains cord safety, exposed-charging-contact short-circuit risk) before fabrication
 
 ### Checkpoint: Phase 6
 
-- [ ] Bin fan-separator concept validated against the placeholder $220 budget in `DumpBinSeparator.md`; safety citations added to `REFERENCES.md` before any bin prototype is built
+- [ ] Station concept validated against the placeholder $220 budget in `ChargingDumpStation.md`; Task 12/25 docking-bay geometry reconciled into one design; safety citations added to `REFERENCES.md` before any station prototype is built
 
 ## Risks and Mitigations
 
@@ -130,8 +130,9 @@ further as its own WBS branch when that phase opens.
 | Licensing scaffolding retrofitted after design work begins | Medium — compliance | Phase 0 is sequenced first and is a hard gate in the Architecture Decisions |
 | Scope creep — full Roomba+FRC hybrid is a large multi-year build | Medium | Phases 2-4 stay at concept/selection granularity here; project-overseer opens each as its own WBS branch only when prior phase checkpoint passes |
 | $500 BOM ceiling may be incompatible with LIDAR/depth-camera-class perception | Medium (downgraded from High 2026-09-05) | Compute half resolved: BeagleBone Blue selected at ~$45-50, integrating motor driver/IMU/encoders/charger that would otherwise be separate line items (see `ComputeSelection.md`), freeing budget into contingency. Sensor-suite half still open — ultrasonic + PIR/thermal remains the cost-feasible target over LIDAR/depth camera; Task 17 must design against that range/reliability profile, not assume LIDAR |
-| Bin fan-separator airflow sizing is unvalidated (may tumble light toys along with trash, or fail to carry tissue-class debris) | Medium | Task 25 flags airflow CFM/static-pressure sizing as an explicit open question requiring empirical testing, not assumed solved by the concept note in `DumpBinSeparator.md` |
-| Mains-powered bin with a fan is a new safety surface in a home with kids/pets | Medium — safety | Task 27 requires household-appliance and fan-guarding safety citations in `REFERENCES.md` before any bin prototype is built; preferring an off-the-shelf UL/ETL-listed blower module over a from-scratch fan design is noted as a way to inherit existing certification |
+| Station fan-separator airflow sizing is unvalidated (may tumble light toys along with trash, or fail to carry tissue-class debris) | Medium | Task 25 flags airflow CFM/static-pressure sizing as an explicit open question requiring empirical testing, not assumed solved by the concept note in `ChargingDumpStation.md` |
+| Mains-powered charging/dump station with a fan is a new safety surface in a home with kids/pets, now compounded by exposed charging contacts at the same location | Medium — safety | Task 27 requires household-appliance, fan-guarding, and charging-contact short-circuit safety citations in `REFERENCES.md` before any station prototype is built; preferring an off-the-shelf UL/ETL-listed blower module over a from-scratch fan design is noted as a way to inherit existing certification |
+| Merging the charging dock and dump station into one unit couples Task 12 and Task 25 — a design change to one now forces re-checking the other | Low | Both tasks explicitly cross-reference `ChargingDumpStation.md`; the Phase 6 checkpoint requires their geometry be reconciled into one design before either closes |
 
 ## Open Questions — RESOLVED 2026-09-05
 

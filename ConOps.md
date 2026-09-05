@@ -22,31 +22,37 @@ raised in `tasks/plan.md`. Licensed CC-BY-SA 4.0 per [`LICENSING.md`](LICENSING.
 - Irregular toys/debris up to 2 in (50.8 mm) cube (see `PayloadEnvelope.md`
   for the full envelope and the small-parts exclusion).
 
-## Hopper-to-bin interface
+## Charging & Dump Station
 
-- **Dump-through-chute.** The robot docks at a fixed chute location and
-  actuates its onboard hopper to empty through the chute; it does not enter,
-  carry, or dock inside the stationary bin itself. This means the mechanical
-  interface (`TODO.md` §2.3) only needs to solve alignment-to-chute-mouth and
-  a dump actuation, not a full bin-entry maneuver.
-- **Mesh-bottom hopper (added 2026-09-05):** the onboard hopper has a mesh/
-  perforated floor that sheds incidental fine dirt back to the floor during
-  transit, keeping hopper capacity dedicated to toys. This is passive
-  dirt-shedding only — TidySweep does not vacuum or carry fine debris to the
-  bin. See `HopperMechanism.md`.
-- **Bin-side fan separator (added 2026-09-05):** the stationary bin is not a
-  passive receptacle — it actively separates light incidental trash (tissue,
-  lint, paper) from toys using an airflow/fan stage as toys and trash fall
-  through the chute. The bin is a **mains-powered appliance with its own
-  budget**, separate from the robot's $500 BOM ceiling. See
-  `DumpBinSeparator.md`.
+**Revised 2026-09-05: the charging dock and the dump bin are one physical
+station, not two locations.** The robot docks once; that single docking
+event both begins charging and triggers the hopper dump. See
+`ChargingDumpStation.md` for the full station design (this supersedes the
+earlier framing where the bin was a separate stand-alone receptacle).
 
-## Charging
-
-- **Pogo-pin contact charging** at a fixed dock. Contact charging demands
-  tighter docking-approach alignment tolerance than inductive charging would
-  have — the docking navigation task (`TODO.md` §4.5) must treat final
-  approach as a precision alignment problem, not just "get close."
+- **Dump-through-chute.** The robot docks at the station and actuates its
+  onboard hopper to empty through the station's chute; it does not enter,
+  carry, or dock inside a separate bin. The mechanical interface
+  (`TODO.md` §2.3/§2.4) needs to solve alignment-to-chute-mouth and a dump
+  actuation as part of the same approach used for charging, not a second
+  maneuver.
+- **Mesh-bottom hopper:** the onboard hopper has a mesh/perforated floor
+  that sheds incidental fine dirt back to the floor during transit, keeping
+  hopper capacity dedicated to toys. This is passive dirt-shedding only —
+  TidySweep does not vacuum or carry fine debris to the station. See
+  `HopperMechanism.md`.
+- **Station-side fan separator:** the station actively separates light
+  incidental trash (tissue, lint, paper) from toys using an airflow/fan
+  stage as toys and trash fall through the chute. The station is a
+  **mains-powered appliance with its own budget**, separate from the
+  robot's $500 BOM ceiling. See `ChargingDumpStation.md`.
+- **Pogo-pin contact charging.** Contact charging demands tighter
+  docking-approach alignment tolerance than inductive charging would have —
+  the docking navigation task (`TODO.md` §4.5) must treat final approach as
+  a precision alignment problem, not just "get close." The same mains
+  supply that runs the fan also feeds the DC charging contacts (see
+  `ChargingDumpStation.md`), and the docking-contact signal itself can
+  double as the dump-activation trigger.
 
 ## Autonomy model
 

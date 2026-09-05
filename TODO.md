@@ -26,8 +26,8 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 
 - [ ] 2.1 Chassis & drivetrain trade study (differential vs. tracked, threshold-climbing)
 - [ ] 2.2 Intake/pickup mechanism concept (pinch-point guarding standard required — see REFERENCES.md open items)
-- [ ] 2.3 Hopper + bin-emptying mechanism concept — mesh/perforated bottom for passive dirt-shedding (see [`HopperMechanism.md`](HopperMechanism.md))
-- [ ] 2.4 Charging dock mechanical interface concept
+- [ ] 2.3 Hopper + dump mechanism concept — mesh/perforated bottom for passive dirt-shedding (see [`HopperMechanism.md`](HopperMechanism.md))
+- [ ] 2.4 Charging dock mechanical interface concept — robot-side half of the combined station in §6; co-designed with §6.1, not a separate location (see [`ChargingDumpStation.md`](ChargingDumpStation.md))
 
 ## 3. Electrical / Compute Subsystem
 
@@ -50,21 +50,24 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 - [ ] 5.3 Supervised living-obstacle field test
 - [ ] 5.4 Full end-to-end mission test (pickup → hopper → dock → dump → return-to-charge)
 
-## 6. Stationary Bin Subsystem (new, added 2026-09-05 — mains-powered accessory, separate budget from the robot's $500 BOM)
+## 6. Charging & Dump Station Subsystem (added 2026-09-05, revised same day to merge with the charging dock — one combined station, not two locations; mains-powered, separate budget from the robot's $500 BOM)
 
-- [ ] 6.1 Bin fan-separator mechanical concept (see [`DumpBinSeparator.md`](DumpBinSeparator.md))
-- [ ] 6.2 Bin electrical design (fan/blower, mains supply, dump-activation trigger)
-- [ ] 6.3 Bin safety-standard vetting (household appliance safety, fan guarding, mains cord safety)
+- [ ] 6.1 Station fan-separator + docking-bay mechanical concept, co-designed with §2.4 (see [`ChargingDumpStation.md`](ChargingDumpStation.md))
+- [ ] 6.2 Station electrical design (fan/blower, shared mains PSU feeding both the fan and the robot's DC charging contacts, dump-activation trigger derived from the docking-contact signal)
+- [ ] 6.3 Station safety-standard vetting (household appliance safety, fan guarding, mains cord safety, exposed-charging-contact short-circuit risk)
 
 ---
 
 **Current phase:** Phase 0 (Governance & Compliance) and Phase 1
 (Requirements & ConOps) both complete as of 2026-09-05. Phase 3's §3.1
 compute SKU decision (BeagleBone Blue) was made early, out of WBS order, at
-operator request. Phase 6 (Stationary Bin Subsystem) was added 2026-09-05
-at operator request — it is a mains-powered accessory with its own budget,
-separate from the robot's $500 BOM. Phase 2 (Mechanical Subsystem) is ready
-to open — start with §2.1 (chassis/drivetrain trade study), which is
-unblocked and has no dependencies. §3.1's remaining half (occupancy/
-living-obstacle sensor suite) and all of §6 are also ready whenever picked
-up.
+operator request. Phase 6 (Charging & Dump Station Subsystem) was added
+2026-09-05 and revised the same day to merge with the charging dock into
+one physical station — it is a mains-powered accessory with its own
+budget, separate from the robot's $500 BOM. **§2.4 and §6.1 are now a
+co-designed pair, not independent tasks** — whichever is picked up first
+should read `ChargingDumpStation.md` in full. Phase 2 (Mechanical
+Subsystem) is ready to open — start with §2.1 (chassis/drivetrain trade
+study), which is unblocked and has no dependencies. §3.1's remaining half
+(occupancy/living-obstacle sensor suite) and all of §6 are also ready
+whenever picked up.

@@ -45,10 +45,13 @@ is marked "requires verification" below with a corresponding TODO in
     for the charging system (`TODO.md` §3.3) — **not yet researched or
     cited**.
   - Household appliance / electric fan safety standard (candidate: UL 507
-    or the IEC 60335 series) for the stationary bin's fan-separator
-    (`TODO.md` §6.3, `DumpBinSeparator.md`) — **not yet researched or
-    cited**. The same machine-guarding item above extends to the bin's fan
-    intake, since it will operate on the floor of a home with children.
+    or the IEC 60335 series) for the charging & dump station's fan-separator
+    (`TODO.md` §6.3, `ChargingDumpStation.md`) — **not yet researched or
+    cited**. The same machine-guarding item above extends to the station's
+    fan intake, since it will operate on the floor of a home with children.
+    A short-circuit/fire-risk consideration for the station's exposed
+    charging contacts (now co-located with the fan) is also flagged in
+    `ChargingDumpStation.md` and not yet backed by a citation.
 
 ## Removed / Superseded Citations
 

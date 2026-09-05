@@ -9,9 +9,9 @@ TidySweep/
 ├── AGENTS.md              # Authoritative AI-agent instructions (model-agnostic)
 ├── CLAUDE.md               # Stub pointing to AGENTS.md
 ├── Claude-MEMORY.md        # Auditable mirror of Claude's auto-memory writes for this project
+├── ChargingDumpStation.md  # Phase 6 (+ Task 12): combined charging dock + mains-powered dump/fan-separator station
 ├── ComputeSelection.md     # Phase 3 (Task 13, done early): BeagleBone SKU decision — BeagleBone Blue
 ├── ConOps.md               # Phase 1: Concept of Operations (mission profile)
-├── DumpBinSeparator.md     # Phase 6: stationary mains-powered bin fan-separator concept
 ├── HopperMechanism.md      # Phase 2 (Task 11): mesh-bottom hopper concept
 ├── LICENSE-DOCS            # CC-BY-SA 4.0 full legal text (governs documentation)
 ├── LICENSE-HARDWARE        # CERN-OHL-P 2.0 full legal text (governs hardware description files)
