@@ -39,8 +39,10 @@ is marked "requires verification" below with a corresponding TODO in
   reference.
 - Safety-relevant standards not yet added (flagged in `tasks/plan.md` Risks
   table, to be added when the corresponding design task opens):
-  - Machine-guarding / pinch-point standard for the intake roller mechanism
-    (`TODO.md` §2.2) — **not yet researched or cited**.
+  - Machine-guarding / pinch-point standard for the intake mechanism
+    (`TODO.md` §2.2, `IntakeMechanism.md`) — specifically the Stage 2
+    flipper's nip point and the plow-to-flipper transition — **not yet
+    researched or cited**.
   - Battery/charging safety standard (candidate: UL 2054 or IEC 62133 family)
     for the charging system (`TODO.md` §3.3) — **not yet researched or
     cited**.

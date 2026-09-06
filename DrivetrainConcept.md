@@ -61,13 +61,15 @@ assumed.
   semicircle) — larger than any prior revision (full circle 254.5 sq in,
   pure semicircle 127.2 sq in, original rectangle 168 sq in).
 
-## Open: wheel count and caster layout — coupled to Task 10, not decided here
+## Wheel count and caster layout — confirmed by Task 10
 
 The operator specifically flagged that this shouldn't be settled as a pure
-locomotion question, because the active intake mechanism (Task 10, not yet
-designed) affects where weight and ground-contact pressure need to be.
-This section states the coupling and a working default, not a final
-answer — Task 10 detailed design can override the default below.
+locomotion question, because the active intake mechanism would affect
+where weight and ground-contact pressure need to be. **Confirmed
+2026-09-05:** `IntakeMechanism.md`'s Task 10 decision (passive plow +
+active flipper) is exactly the front-mounted, forward-scooping intake this
+working default assumed — the caster layout below is now validated, not
+provisional.
 
 **Working default: 2 drive wheels positioned within the rectangular
 midsection (roughly at or near the rectangle/semicircle junction), plus a
@@ -102,7 +104,7 @@ Reasoning:
   disc, to keep pivot-in-place behavior balanced. Noted as a consideration,
   not decided.
 
-## Threshold crossing with a flat front edge — new consideration
+## Threshold crossing with a flat front edge — RESOLVED by Task 10
 
 A full flat 18 in front edge crossing the 3/8 in threshold means the
 entire width of the leading edge meets the threshold's bevel
@@ -110,22 +112,20 @@ simultaneously (a line contact), unlike a rounded bumper's point contact.
 This is a standard design pattern (e.g., a car bumper or snowplow blade
 riding a beveled transition) and not inherently a problem, but the
 scoop mechanism's own lowest ground-engaging edge — not just a caster or
-bumper — is what will meet the threshold first. Task 10 needs to give that
-edge its own ramp/chamfer geometry; this is not solved by the drivetrain
-concept alone.
+bumper — is what would meet the threshold first, needing its own ramp/
+chamfer geometry. **Resolved 2026-09-05:** `IntakeMechanism.md`'s passive
+plow (Task 10) has exactly that chamfered leading edge, doing double duty
+as both the toy-gathering scoop and the threshold ramp — one part, not two
+separate designs.
 
-## Available H-bridge capacity — a Task 10/14 opportunity, not yet claimed
+## Available H-bridge capacity — CLAIMED by Task 10
 
 With differential drive using 2 of BeagleBone Blue's 4 onboard motor
-H-bridge outputs, **2 channels remain free.** This is worth flagging to
-Task 10 (intake mechanism) and Task 14 (motor driver architecture): if the
-intake mechanism's roller/claw motor is a brushed DC motor within Blue's
-H-bridge current rating, it could run directly off one of the spare
-H-bridges rather than requiring a separate motor driver board — a
-potential simplification in the same spirit as the charging-station PSU
-consolidation in `ChargingDumpStation.md`. Not yet confirmed: Task 10 must
-first establish the intake motor's current draw against Blue's H-bridge
-rating before this is treated as decided.
+H-bridge outputs, 2 channels remained free. **Resolved 2026-09-05:**
+`IntakeMechanism.md`'s plow+flipper intake runs off a single motor,
+claiming 1 of the 2 spares — confirming the simplification flagged here
+(no separate intake motor driver board needed) and leaving exactly 1
+H-bridge free for the hopper-dump actuator (Task 11).
 
 ## Cross-references
 
