@@ -20,13 +20,13 @@ parts.
 | Chassis / structure | 1.9 (0.86) | 0 (passive) |
 | Drivetrain (motors, wheels, driver) | 1.2 (0.54) | 15 / 6 |
 | Intake mechanism (roller/claw + actuator) | 0.8 (0.36) | 10 / 3 |
-| Hopper + dump actuator | 0.6 (0.27) | 5 / 1 |
+| Hopper + dump actuator (incl. quick-release hardware) | 0.7 (0.32) | 5 / 1 |
 | Compute (BeagleBone-class SBC) | 0.1 (0.05) | 3 / 3 |
 | Sensor suite (obstacle + living-obstacle + IMU + encoders) | 0.3 (0.14) | 4 / 4 |
 | Battery pack | 1.0 (0.45) | — (source, not load) |
 | Charging contacts (robot-side, pogo-pin) | 0.1 (0.05) | 0 mission / ~40 while docked-charging (not a mission-power load) |
 | Wiring, connectors, fasteners, misc. | 0.2 (0.09) | 1 / 1 |
-| Contingency margin (~5% mass, sized power headroom) | 0.3 (0.14) | 2 / 2 |
+| Contingency margin (~5% mass, sized power headroom) | 0.2 (0.09) | 2 / 2 |
 | **Total** | **6.5 lbm (2.95 kg)** | **~40 W peak / ~20 W mission-average** |
 
 ## Space envelope target
@@ -86,13 +86,13 @@ contingency margin below rather than assumed away.
 | Chassis / structure (D-shape: 18×9 in rectangle + 9 in radius semicircle, 18 in total depth) | 62 |
 | Drivetrain (motors + wheels only — driver is onboard Blue) | 45 |
 | Intake mechanism | 45 |
-| Hopper + dump actuator | 30 |
+| Hopper + dump actuator (incl. quick-release/removable-module hardware, added 2026-09-05) | 35 |
 | Compute (BeagleBone Blue — integrated motor driver, IMU, encoder interface, LiPo charger, WiFi/BT) | 50 |
 | Sensor suite (ultrasonic/PIR occupancy + living-obstacle array only — IMU/encoders now on the compute board, **not** LIDAR, see note) | 45 |
 | Battery pack (cells only — charge management is onboard Blue) | 35 |
 | Charging contacts (robot-side pogo-pin) | 15 |
 | Wiring, connectors, fasteners, misc. | 20 |
-| Contingency margin | 153 |
+| Contingency margin | 148 |
 | **Total** | **$500** |
 
 **Note on the sensor-suite row — this is the remaining half of the "$500

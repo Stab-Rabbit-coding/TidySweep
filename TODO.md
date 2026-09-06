@@ -26,7 +26,7 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 
 - [~] 2.1 Chassis & drivetrain trade study — differential drive (wheeled, not tracked) decided; chassis is a D-shape (18×9 in rectangle + 9 in radius semicircle union), 18 in wide × 18 in total depth, per a full-width front scoop; wheel-count/caster layout left open, coupled to §2.2 (see [`DrivetrainConcept.md`](DrivetrainConcept.md))
 - [~] 2.2 Intake/pickup mechanism concept — passive plow + active flipper (single motor, angled end-sections for side capture) decided (see [`IntakeMechanism.md`](IntakeMechanism.md)); pinch-point guarding standard still required before fabrication
-- [ ] 2.3 Hopper + dump mechanism concept — mesh/perforated bottom for passive dirt-shedding (see [`HopperMechanism.md`](HopperMechanism.md))
+- [~] 2.3 Hopper + dump mechanism concept — mesh sized to retain a 1×1 LEGO brick (≤6 mm aperture, corrected from an earlier oversized placeholder), hopper is a removable quick-release module for unjamming (see [`HopperMechanism.md`](HopperMechanism.md)); latch hardware and removal direction (top vs. rear) still open
 - [ ] 2.4 Charging dock mechanical interface concept — robot-side half of the combined station in §6; co-designed with §6.1, not a separate location (see [`ChargingDumpStation.md`](ChargingDumpStation.md))
 
 ## 3. Electrical / Compute Subsystem
