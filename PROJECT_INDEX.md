@@ -17,6 +17,7 @@ TidySweep/
 ├── IntakeMechanism.md      # Phase 2 (Task 10): passive plow + active flipper intake concept
 ├── LICENSE-DOCS            # CC-BY-SA 4.0 full legal text (governs documentation)
 ├── LICENSE-HARDWARE        # CERN-OHL-P 2.0 full legal text (governs hardware description files)
+├── LICENSE-SOFTWARE        # CC0 1.0 Universal full legal text (governs firmware/software source)
 ├── LICENSING.md            # File-type → license mapping
 ├── MassPowerBudget.md      # Phase 1: mass/power/space/cost target allocation
 ├── ObstacleTaxonomy.md     # Phase 1: obstacle classes and detection/response rules

@@ -29,10 +29,11 @@ PocketBeagle — final selection pending, see `TODO.md` §3.1).
 
 - **Documentation** (this README, all `.md` files, diagrams): [CC-BY-SA 4.0](LICENSE-DOCS)
 - **Hardware** (CAD, schematics, PCB layouts): [CERN-OHL-P 2.0](LICENSE-HARDWARE)
+- **Firmware/software**: [CC0 1.0 Universal](LICENSE-SOFTWARE) — not CC-BY-SA;
+  Creative Commons' own FAQ recommends against CC licenses for software,
+  and CC0 is the one exception they carve out as acceptable.
 
-See [`LICENSING.md`](LICENSING.md) for the full file-type mapping, including
-the still-open question of which license governs firmware/software source
-once that work begins.
+See [`LICENSING.md`](LICENSING.md) for the full file-type mapping.
 
 ## Governance
 

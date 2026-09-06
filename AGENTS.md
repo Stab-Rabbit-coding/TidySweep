@@ -29,6 +29,10 @@ numbers; never leave engineering values as "TBD."
   and [`LICENSING.md`](LICENSING.md).
 - **Hardware license: CERN-OHL-P 2.0** — see [`LICENSE-HARDWARE`](LICENSE-HARDWARE)
   and [`LICENSING.md`](LICENSING.md).
+- **Firmware/software license: CC0 1.0 Universal** — see
+  [`LICENSE-SOFTWARE`](LICENSE-SOFTWARE) and [`LICENSING.md`](LICENSING.md).
+  Not CC-BY-SA: Creative Commons' own FAQ recommends against CC licenses for
+  software; CC0 is the one exception they carve out as acceptable.
 - **Living obstacles are a distinct hazard class** from static furniture.
   Cats, dogs, and humans move unpredictably and must never be contacted.
   Detection/response logic for this class must be designed and tested

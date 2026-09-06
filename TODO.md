@@ -13,7 +13,7 @@ progress, `[!]` reopened for rework, `[ ]` ready/not started, `[X]` blocked.
 - [x] 0.2 Licensing infrastructure (LICENSE-DOCS, LICENSE-HARDWARE, LICENSING.md)
 - [x] 0.3 REFERENCES.md skeleton with initial BeagleBone SKU citations
 - [x] 0.4 TODO.md WBS + PROJECT_INDEX.md + Claude-MEMORY.md
-- [ ] 0.5 Select firmware/software source-code license (CERN-OHL-P does not itself license software; see `LICENSING.md` open item)
+- [x] 0.5 Select firmware/software source-code license — CC0 1.0 Universal decided 2026-09-05, not CC-BY-SA (CC's own FAQ recommends against CC licenses for software; CC0 is the one exception carved out); see [`LICENSING.md`](LICENSING.md)
 
 ## 1. Requirements & Concept of Operations (ConOps)
 
